@@ -1,0 +1,10 @@
+export function TodoListItem({ todo,onClickComplete,onClickDelete }) {	
+	return (
+		<div>
+			<h3>{ todo.item }</h3>
+			{ todo.isComplete &&  <p>Complete</p> }
+			<button onClick = { onClickComplete }>Mark as Completed</button>
+			<button onClick = { onClickDelete }>Delete</button>
+		<div>
+	)
+}
