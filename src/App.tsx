@@ -7,10 +7,30 @@ import './App.css'
 
 function App() {
 	const [ todos,setTodos ] = useState([])
-	
+
+
+    	
 	useEffect(() => {
 		const loadTodos = async () => {
+			const url = 'http://localhost:8080/todos'
+			const method = 'get'
+			const _request = new Request(url,{
+				method,
+				headers: { "Content-Type": "application/json" }
+			})
 
+			fetch(_request)
+				.then((val) => { 
+					if(val.status === 200) {
+				        	console.log(`200`)
+						val.json().then((res) => { 
+							setTodos(res.message.todo)
+						})
+					}
+
+
+				})
+				
 		}
 
 		loadTodos()
